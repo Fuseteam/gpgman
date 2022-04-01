@@ -9,6 +9,7 @@ function generate_key(){
     version=$(gpg --version|awk '/gpg/{print $3}')
     #if version >= 2.1.17 gpg --full-generate-key
     #else gpg --default-new-key-algo rsa4096 --gen-key
+    gpg --full-generate-key;
 }
 
 function show_public(){
@@ -27,6 +28,7 @@ function show_keys(){
         "id") gpgman key pair|secawk;;
         "public")show_public $id;;
         "edit")gpg --edit-key $id;;
+        "generate")generate_key;;
     esac
 }
 

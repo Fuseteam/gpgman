@@ -4,8 +4,9 @@ this is script that warps around gpg to make handling [gpg signatures](https://d
 
 # Usage
 
-## show/edit keys
+## generate/show/edit keys
 ```
+gpgman key generate #generate a gpg key pair
 gpgman key id #show the id(s) of existing keys
 gpgman key pair #show the available gpg key pairs
 gpgman key public <id> #show the public key ready to add to github and such
@@ -39,6 +40,6 @@ The project is a bunch of bash and awk scripts, as such installation relatively 
 - profit
 
 # todo
-- generate new key pairs
+- take the different ways to generate gpg keys into account
 - add a function to self install/update just like crackle xd
 - other things i haven't thought of yet
