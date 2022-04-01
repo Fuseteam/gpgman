@@ -28,7 +28,8 @@ function show_keys(){
         "public")show_public $id;;
         "edit")gpg --edit-key $id;;
         "generate")generate_key;;
-        *)echo "the only available options are pair|id|public|edit|generate";;
+        "keygrip")awkeygrip;;
+        *)echo "the only available options are pair|id|public|edit|generate|keygrip";;
     esac
 }
 

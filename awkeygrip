@@ -1,0 +1,11 @@
+#!/usr/bin/awk -f
+BEGIN {
+        FS="[ |/]"
+	c="gpg --with-keygrip -K --keyid-format=long"
+        while(c|getline){
+            if(/^sec/) print $1" "$5;
+            if(/^ssb/) print $1" "$5;
+            if(/Keygrip/) print $0;
+        }
+        close(c);
+}
