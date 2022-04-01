@@ -63,7 +63,8 @@ function import_keys(){
 
 case $operation in
     "key")show_keys;;
+    "preset")/usr/lib/gnupg/gpg-preset-passphrase --preset $otype;;
     "export")export_keys $otype $id $name;;
     "import")import_keys $otype $id $name;;
-    *)echo "the only available options are key|export|import";;
+    *)echo "the only available options are key|preset|export|import";;
 esac
