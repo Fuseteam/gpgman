@@ -1,0 +1,55 @@
+#!/bin/bash
+
+operation=$1;
+otype=$2;
+id=$3;
+name=$4;
+
+function generate_key(){
+    version=$(gpg --version|awk '/gpg/{print $3}')
+    #if version >= 2.1.17 gpg --full-generate-key
+    #else gpg --default-new-key-algo rsa4096 --gen-key
+}
+
+function show_public(){
+set -x;
+if [ -z $1 ]; then
+    echo "which key would you like to show?"
+    gpgman key id
+else
+    gpg --armor --export $1;
+fi
+}
+
+function show_keys(){
+    case $otype in
+        "pair") gpg --list-secret-keys --keyid-format=long;;
+        "id") gpgman key pair|secawk;;
+        "public")show_public $id;;
+        "edit")gpg --edit-key $id;;
+    esac
+}
+
+function export_keys(){
+    if [ -z "$3" ]; then
+        echo "missing name";
+        exit;
+    fi
+    case $1 in
+        "public") gpg --output $3 --armor --export $2;;
+        "private") gpg --output $3 --armor --export-secret-key $2;;
+    esac
+}
+
+function import_keys(){
+    case $1 in
+        "public") gpg --import $2;rm $2;;
+        "private") gpg --allow-secret-key-import --import $2;rm $2;;
+    esac
+}
+
+case $operation in
+    "key")show_keys;;
+    "export")export_keys $otype $id $name;;
+    "import")import_keys $otype $id $name;;
+esac
