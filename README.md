@@ -34,8 +34,7 @@ The project is a bunch of bash and awk scripts, as such installation relatively 
 
 - open a terminal
 - run `unzip Downloads/gpgman.zip -d gpgman`
-- run `cd gpgman`
-- run `make install`
+- run `gpgman/gpgman setup`
 - ???
 - profit
 

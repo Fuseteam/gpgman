@@ -1,0 +1,20 @@
+#!/bin/bash
+PREFIX="$HOME/.local";
+install_gpgman(){
+	mkdir -p ${PREFIX}/bin
+	mkdir -p ${PREFIX}/lib
+	mkdir -p ${PREFIX}/share/bash-completion/completions
+	cp -f bin/* ${PREFIX}/bin
+	chmod 755 ${PREFIX}/bin/gpgman
+	chmod 755 ${PREFIX}/bin/secawk
+	chmod 755 ${PREFIX}/bin/awkeygrip
+}
+remove_gpgman(){
+	rm -f ${PREFIX}/bin/gpgman\
+	      ${PREFIX}/bin/awkeygrip\
+	      ${PREFIX}/bin/secawk
+}
+if [ "$1" = "setup" ]; then
+	install_gpgman;
+	rm $HOME/gpgman;
+fi
