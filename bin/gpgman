@@ -24,7 +24,7 @@ fi
 function show_keys(){
     case $otype in
         "pair") gpg --list-secret-keys --keyid-format=long;;
-        "id") gpgman key pair|secawk;;
+        "id") secawk;;
         "public")show_public $id;;
         "edit")gpg --edit-key $id;;
         "generate")generate_key;;
