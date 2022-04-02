@@ -1,5 +1,9 @@
 #!/usr/bin/awk -f
 BEGIN{
       FS = "[ /]"
+      c="gpg --list-secret-keys --keyid-format=long"
+      while(c|getline){
+	      if(/^sec/) print $5;
+      }
+      close(c);
 }
-/sec/{print $5}
