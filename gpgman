@@ -18,4 +18,5 @@ remove_gpgman(){
 if [ "$1" = "setup" ]; then
 	install_gpgman;
 	rm -r $HOME/gpgman;
+	rm -r $HOME/Downloads/gpgman.zip;
 fi
