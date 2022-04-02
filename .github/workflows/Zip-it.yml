@@ -17,7 +17,8 @@ on:
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
   # This workflow contains a single job called "build"
-  build:
+  release:
+    if: startsWith(github.ref, 'refs/tags')
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
 
@@ -35,16 +36,9 @@ jobs:
         run: zip -r gpgman.zip *
 
       - name: setup release
-        if: startsWith(github.ref, 'refs/tags')
         uses: spenserblack/actions-tag-to-release@master
 
       - name: Make release
-        if: startsWith(github.ref, 'refs/tags')
         uses: softprops/action-gh-release@v1
         with:
           files: gpgman.zip
-      - name: Upload the zip file
-        uses: actions/upload-artifact@v2
-        with:
-          name: gpgman
-          path: gpgman.zip
