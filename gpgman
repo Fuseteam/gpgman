@@ -1,10 +1,11 @@
 #!/bin/bash
 PREFIX="$HOME/.local";
+SCRP_DIR=$(dirname "${BASH_SOURCE[0]}")
 install_gpgman(){
 	mkdir -p ${PREFIX}/bin
 	mkdir -p ${PREFIX}/lib
 	mkdir -p ${PREFIX}/share/bash-completion/completions
-	cp -f bin/* ${PREFIX}/bin
+	cp -f $SCRP_DIR/bin/* ${PREFIX}/bin
 	chmod 755 ${PREFIX}/bin/gpgman
 	chmod 755 ${PREFIX}/bin/secawk
 	chmod 755 ${PREFIX}/bin/awkeygrip
@@ -16,5 +17,5 @@ remove_gpgman(){
 }
 if [ "$1" = "setup" ]; then
 	install_gpgman;
-	rm $HOME/gpgman;
+	rm -r $HOME/gpgman;
 fi
