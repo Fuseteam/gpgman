@@ -5,10 +5,8 @@ install_gpgman(){
 	mkdir -p ${PREFIX}/bin
 	mkdir -p ${PREFIX}/lib
 	mkdir -p ${PREFIX}/share/bash-completion/completions
+	chmod 755 ${PREFIX}/bin/*
 	cp -f $SCRP_DIR/bin/* ${PREFIX}/bin
-	chmod 755 ${PREFIX}/bin/gpgman
-	chmod 755 ${PREFIX}/bin/secawk
-	chmod 755 ${PREFIX}/bin/awkeygrip
 }
 remove_gpgman(){
 	rm -f ${PREFIX}/bin/gpgman\
