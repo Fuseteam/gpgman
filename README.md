@@ -1,5 +1,3 @@
-# GPGMAN the GPG Key Manager
-
 this is script that warps around gpg to make handling [gpg signatures](https://docs.github.com/en/authentication/managing-commit-signature-verification/about-commit-signature-verification) easier
 
 ## Usage
